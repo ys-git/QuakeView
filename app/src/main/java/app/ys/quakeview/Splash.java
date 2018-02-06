@@ -1,6 +1,5 @@
 package app.ys.quakeview;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +27,7 @@ public class Splash extends AppCompatActivity {
                 public void run() {
 
                     Intent intent = new Intent();
-                    intent.setClass(Splash.this, MainActivity.class);
+                    intent.setClass(Splash.this, Main.class);
 
                     Splash.this.startActivity(intent);
                     Splash.this.finish();
