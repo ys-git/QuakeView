@@ -22,6 +22,7 @@ public class Main extends AppCompatActivity {
     protected XmlPullParserFactory xmlPullParserFactory;
     protected XmlPullParser parser;
     public String url;
+    String val;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,8 @@ public class Main extends AppCompatActivity {
 
             if (!s.equals("")) {
 
+
+
                 //TEXT SETTER
 
 
@@ -91,17 +94,16 @@ public class Main extends AppCompatActivity {
                 if (eventType == XmlPullParser.START_TAG) {
                     name = parser.getName();
                     if (name.equals("vibration")) {
-                        mEntity.temp = parser.nextText();
-                        a=mEntity.temp;
+                        mEntity.value = parser.nextText();
+                        val=mEntity.value;
                     }
                 }
                 eventType = parser.next();
             }
-            return mEntity.temp;
+            return mEntity.value;
         }
         public class Entity {
-            public String moon,uvindex,visibility,windstate,longitude,latitude,sunset,
-                    sunrise,pressure,dewpoint,humidity,feelslike,place,temp,date,time;
+            public String value;
         }
     }
 }
