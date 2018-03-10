@@ -7,10 +7,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 
-/**
- * Created by YS on 12-12-2017.
- */
-
 public class Splash extends AppCompatActivity {
 
 
