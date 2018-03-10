@@ -21,8 +21,9 @@ public class Main extends AppCompatActivity {
 
     protected XmlPullParserFactory xmlPullParserFactory;
     protected XmlPullParser parser;
-    public String url;
+    public String urls;
     String val;
+    TextView tn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class Main extends AppCompatActivity {
         ActionBar myActionBar = getSupportActionBar();
         myActionBar.hide();
 
-        url = new String("https://circuitbreakers.000webhostapp.com/data.xml");
+        urls = new String("https://circuitbreakers.000webhostapp.com/data.xml");
         try {
             xmlPullParserFactory = XmlPullParserFactory.newInstance();
             xmlPullParserFactory.setNamespaceAware(false);
@@ -40,7 +41,7 @@ public class Main extends AppCompatActivity {
             e.printStackTrace();
         }
         BackgroundAsyncTask backgroundAsyncTask = new BackgroundAsyncTask();
-        backgroundAsyncTask.execute(url);
+        backgroundAsyncTask.execute(urls);
     }
 
     private class BackgroundAsyncTask extends AsyncTask<String, Void, String> {
@@ -76,10 +77,8 @@ public class Main extends AppCompatActivity {
             super.onPostExecute(s);
 
             if (!s.equals("")) {
-
-
-
-                //TEXT SETTER
+                tn=(TextView)findViewById(R.id.textView4);
+                tn.setText(val);
 
 
 
