@@ -71,8 +71,9 @@ public class Main extends AppCompatActivity {
         viewport.setMaxY(10);
         viewport.setScrollable(true);
 
-            BackgroundAsyncTask backgroundAsyncTask = new BackgroundAsyncTask();
-            backgroundAsyncTask.execute(server_url);
+            //BackgroundAsyncTask backgroundAsyncTask = new BackgroundAsyncTask();
+            //backgroundAsyncTask.execute(server_url);
+        tx(1);
         }
 
 
@@ -177,6 +178,8 @@ public class Main extends AppCompatActivity {
             try {
 
                 //code to repeat
+                BackgroundAsyncTask backgroundAsyncTask = new BackgroundAsyncTask();
+                backgroundAsyncTask.execute(server_url);
 
                 Log.i("MyTestService", "Recurring");
             } catch (Exception e) {
