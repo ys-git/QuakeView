@@ -23,6 +23,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
 
@@ -31,6 +35,9 @@ public class Main extends AppCompatActivity {
     public String server_url;
     public String val;
     TextView t1;
+    long period;
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    ScheduledFuture beeperHandle;
 
     private static final Random RANDOM = new Random();
     private LineGraphSeries<DataPoint> series;
@@ -154,6 +161,12 @@ public class Main extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    public void tx(long periods) {
+        beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, periods, TimeUnit.MINUTES);
+        //Log.i("MyTestService", "Service at tx");
+
     }
 
     // add random data to graph
