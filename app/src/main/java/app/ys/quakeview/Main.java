@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -163,11 +164,29 @@ public class Main extends AppCompatActivity {
         }).start();
     }
 
+    //Recurring Server calls
     public void tx(long periods) {
-        beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, periods, TimeUnit.MINUTES);
-        //Log.i("MyTestService", "Service at tx");
+        beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, periods, TimeUnit.SECONDS);
+        Log.i("MyTestService", "Service at tx");
 
     }
+
+    final Runnable beeper = new Runnable() {
+
+        public void run() {
+            try {
+
+                //code to repeat
+
+                Log.i("MyTestService", "Recurring");
+            } catch (Exception e) {
+                Log.e("TAG", "error in executing: It will no longer be run!: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+    };
+
 
     // add random data to graph
     private void addEntry() {
